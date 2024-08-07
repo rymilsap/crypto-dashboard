@@ -5,6 +5,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1e2126;
+  color: #ffffff;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.crypto-table th,
+.crypto-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #2c3038;
+}
+
+.crypto-table th {
+  background-color: #2c3038;
+  font-weight: bold;
+}
+
+.crypto-table tr:hover {
+  background-color: #2c3038;
 }
 
 code {
