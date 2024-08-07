@@ -9,10 +9,7 @@ const Header = () => {
           <ul>
             <li><a href="#">Cryptocurrencies</a></li>
             <li><a href="#">Exchanges</a></li>
-            <li><a href="#">NFT</a></li>
             <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Watchlist</a></li>
-            <li><a href="#">Learn</a></li>
           </ul>
         </nav>
       </div>
