@@ -16,9 +16,6 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      <div className="header-right">
-        <input type="text" placeholder="Search" className="search-input" />
-      </div>
     </header>
   );
 };
