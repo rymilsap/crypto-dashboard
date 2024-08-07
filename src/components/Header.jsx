@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-left">
-        <img src="/logo.png" alt="CoinMarketCap Logo" className="logo" />
+        <img src="/logo.png" alt="RYCap" className="logo" />
         <nav>
           <ul>
             <li><a href="#">Cryptocurrencies</a></li>
