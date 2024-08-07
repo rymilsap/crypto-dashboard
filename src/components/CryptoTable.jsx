@@ -20,7 +20,8 @@ function CryptoTable() {
           <th>Market Cap</th>
           <th>Volume(24h)</th>
           <th>Circulating Supply</th>
-          <th>Last 7 Days</th>
+          <th>24 Hour</th>
+          <th>7 Day</th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +35,11 @@ function CryptoTable() {
             <td>${coin.market_cap.toLocaleString()}</td>
             <td>${coin.total_volume.toLocaleString()}</td>
             <td>{coin.circulating_supply.toLocaleString()} {coin.symbol.toUpperCase()}</td>
+            <td>
+              <Sparklines data={coin.sparkline_in_7d.price.slice(-24)} width={100} height={30}>
+                <SparklinesLine color={coin.price_change_percentage_24h > 0 ? "green" : "red"} />
+              </Sparklines>
+            </td>
             <td>
               <Sparklines data={coin.sparkline_in_7d.price} width={100} height={30}>
                 <SparklinesLine color={coin.price_change_percentage_7d > 0 ? "green" : "red"} />
