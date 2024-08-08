@@ -41,3 +41,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.coin-name-cell {
+  display: flex;
+  align-items: center;
+}
+
+.coin-name-cell img {
+  margin-right: 8px;
+}
+
+.coin-name-cell div {
+  display: flex;
+  flex-direction: column;
+}
+
+.coin-symbol {
+  color: gray;
+  font-size: 0.8em;
+}

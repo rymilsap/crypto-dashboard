@@ -28,7 +28,13 @@ function CryptoTable() {
         {data.map((coin) => (
           <tr key={coin.id}>
             <td>{coin.market_cap_rank}</td>
-            <td>{coin.name}</td>
+            <td className="coin-name-cell">
+              <img src={coin.image} alt={coin.name} width="24" height="24" />
+              <div>
+                <span>{coin.name}</span>
+                <span className="coin-symbol">{coin.symbol.toUpperCase()}</span>
+              </div>
+            </td>
             <td>${coin.current_price.toFixed(2)}</td>
             <td>{coin.price_change_percentage_24h.toFixed(2)}%</td>
             <td>{coin.price_change_percentage_7d_in_currency?.toFixed(2)}%</td>
