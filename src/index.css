@@ -60,3 +60,22 @@ code {
   color: gray;
   font-size: 0.8em;
 }
+
+.percentage-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.percentage-cell .arrow {
+  margin-right: 4px;
+}
+
+.crypto-table td {
+  text-align: right;
+}
+
+.crypto-table td:first-child,
+.crypto-table td:nth-child(2) {
+  text-align: left;
+}
