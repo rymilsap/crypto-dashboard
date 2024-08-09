@@ -45,6 +45,7 @@ code {
 .coin-name-cell {
   display: flex;
   align-items: center;
+  padding: 0;
 }
 
 .coin-name-cell img {
@@ -54,6 +55,7 @@ code {
 .coin-name-cell div {
   display: flex;
   flex-direction: column;
+  padding: 12px 0;
 }
 
 .coin-symbol {
@@ -72,7 +74,7 @@ code {
 }
 
 .crypto-table td {
-  text-align: right;
+  text-align: left;
 }
 
 .crypto-table td:first-child,
