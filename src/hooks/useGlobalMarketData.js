@@ -8,9 +8,16 @@ export function useGlobalMarketData() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('https://api.coingecko.com/api/v3/global');
-        const jsonData = await response.json();
-        setData(jsonData.data);
+        const [globalResponse, bitcoinResponse] = await Promise.all([
+          fetch('https://api.coingecko.com/api/v3/global'),
+          fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7')
+        ]);
+        const globalData = await globalResponse.json();
+        const bitcoinData = await bitcoinResponse.json();
+        setData({
+          ...globalData.data,
+          market_cap_chart: bitcoinData.market_caps
+        });
         setLoading(false);
       } catch (err) {
         setError(err);
