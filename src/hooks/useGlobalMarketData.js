@@ -7,19 +7,22 @@ export function useGlobalMarketData() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
 
     async function fetchData() {
+      let cachedTimestamp;
       try {
         const cachedData = localStorage.getItem('globalMarketData');
-        const cachedTimestamp = localStorage.getItem('globalMarketDataTimestamp');
+        cachedTimestamp = localStorage.getItem('globalMarketDataTimestamp');
 
         if (cachedData && cachedTimestamp && Date.now() - parseInt(cachedTimestamp) < CACHE_DURATION) {
           setData(JSON.parse(cachedData));
           setLoading(false);
+          setLastUpdated(parseInt(cachedTimestamp));
           return;
         }
 
@@ -43,13 +46,21 @@ export function useGlobalMarketData() {
         if (isMounted) {
           setData(newData);
           setLoading(false);
+          const currentTime = Date.now();
+          setLastUpdated(currentTime);
           localStorage.setItem('globalMarketData', JSON.stringify(newData));
-          localStorage.setItem('globalMarketDataTimestamp', Date.now().toString());
+          localStorage.setItem('globalMarketDataTimestamp', currentTime.toString());
         }
       } catch (err) {
         if (err.name === 'AbortError') return;
         if (isMounted) {
-          setError(err);
+          const cachedData = localStorage.getItem('globalMarketData');
+          if (cachedData) {
+            setData(JSON.parse(cachedData));
+            setLastUpdated(parseInt(cachedTimestamp));
+          } else {
+            setError(err);
+          }
           setLoading(false);
         }
       }
@@ -63,5 +74,5 @@ export function useGlobalMarketData() {
     };
   }, []);
 
-  return { data, loading, error };
+  return { data, loading, error, lastUpdated };
 }

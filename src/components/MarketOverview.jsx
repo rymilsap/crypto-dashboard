@@ -3,7 +3,7 @@ import { useGlobalMarketData } from '../hooks/useGlobalMarketData';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 const MarketOverview = () => {
-  const { data, loading, error } = useGlobalMarketData();
+  const { data, loading, error, lastUpdated } = useGlobalMarketData();
 
   if (loading) return <div className="market-overview">Loading...</div>;
   if (error) return <div className="market-overview">Error: {error.message}</div>;
@@ -24,6 +24,7 @@ const MarketOverview = () => {
 
   return (
     <div className="market-overview">
+      {lastUpdated && <div className="last-updated">Last updated: {new Date(lastUpdated).toLocaleString()}</div>}
       <h2>Market Overview</h2>
       <div className="market-stats">
         <div>
@@ -73,7 +74,7 @@ const MarketOverview = () => {
           </div>
           <div className="chart-container">
             <svg width="100%" height="30" style={{position: 'absolute', top: 0, left: 0}}>
-              {renderReferenceLines(marketCapData.slice(-7), 1)}
+              {renderReferenceLines(marketCapData, 24)}
             </svg>
             <Sparklines data={marketCapData} width={100} height={30}>
               <SparklinesLine color={last7dChange >= 0 ? "#4caf50" : "#f44336"} />

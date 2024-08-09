@@ -3,7 +3,7 @@ import { useStablecoinData } from '../hooks/useStablecoinData';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 const StablecoinComparison = () => {
-  const { data, loading, error } = useStablecoinData();
+  const { data, loading, error, lastUpdated } = useStablecoinData();
   const [usdcValue, setUsdcValue] = useState(null);
   const [eurcValue, setEurcValue] = useState(null);
 
@@ -35,6 +35,7 @@ const StablecoinComparison = () => {
 
   return (
     <div className="stablecoin-comparison">
+      {lastUpdated && <div className="last-updated">Last updated: {new Date(lastUpdated).toLocaleString()}</div>}
       <h2>Stablecoin Comparison (7-day)</h2>
       <div className="stablecoin-charts">
         <div>

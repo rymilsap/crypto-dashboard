@@ -6,19 +6,22 @@ export function useFetchCryptoData() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
 
     async function fetchData() {
+      let cachedTimestamp;
       try {
         const cachedData = localStorage.getItem('cryptoData');
-        const cachedTimestamp = localStorage.getItem('cryptoDataTimestamp');
+        cachedTimestamp = localStorage.getItem('cryptoDataTimestamp');
 
         if (cachedData && cachedTimestamp && Date.now() - parseInt(cachedTimestamp) < CACHE_DURATION) {
           setData(JSON.parse(cachedData));
           setLoading(false);
+          setLastUpdated(parseInt(cachedTimestamp));
           return;
         }
 
@@ -33,13 +36,21 @@ export function useFetchCryptoData() {
         if (isMounted) {
           setData(jsonData);
           setLoading(false);
+          const currentTime = Date.now();
+          setLastUpdated(currentTime);
           localStorage.setItem('cryptoData', JSON.stringify(jsonData));
-          localStorage.setItem('cryptoDataTimestamp', Date.now().toString());
+          localStorage.setItem('cryptoDataTimestamp', currentTime.toString());
         }
       } catch (err) {
         if (err.name === 'AbortError') return;
         if (isMounted) {
-          setError(err);
+          const cachedData = localStorage.getItem('cryptoData');
+          if (cachedData) {
+            setData(JSON.parse(cachedData));
+            setLastUpdated(parseInt(cachedTimestamp));
+          } else {
+            setError(err);
+          }
           setLoading(false);
         }
       }
@@ -53,5 +64,5 @@ export function useFetchCryptoData() {
     };
   }, []);
 
-  return { data, loading, error };
+  return { data, loading, error, lastUpdated };
 }
