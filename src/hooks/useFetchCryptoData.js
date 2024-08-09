@@ -6,22 +6,19 @@ export function useFetchCryptoData() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [lastUpdated, setLastUpdated] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
 
     async function fetchData() {
-      let cachedTimestamp;
       try {
         const cachedData = localStorage.getItem('cryptoData');
-        cachedTimestamp = localStorage.getItem('cryptoDataTimestamp');
+        const cachedTimestamp = localStorage.getItem('cryptoDataTimestamp');
 
         if (cachedData && cachedTimestamp && Date.now() - parseInt(cachedTimestamp) < CACHE_DURATION) {
           setData(JSON.parse(cachedData));
           setLoading(false);
-          setLastUpdated(parseInt(cachedTimestamp));
           return;
         }
 
@@ -36,21 +33,13 @@ export function useFetchCryptoData() {
         if (isMounted) {
           setData(jsonData);
           setLoading(false);
-          const currentTime = Date.now();
-          setLastUpdated(currentTime);
           localStorage.setItem('cryptoData', JSON.stringify(jsonData));
-          localStorage.setItem('cryptoDataTimestamp', currentTime.toString());
+          localStorage.setItem('cryptoDataTimestamp', Date.now().toString());
         }
       } catch (err) {
         if (err.name === 'AbortError') return;
         if (isMounted) {
-          const cachedData = localStorage.getItem('cryptoData');
-          if (cachedData) {
-            setData(JSON.parse(cachedData));
-            setLastUpdated(parseInt(cachedTimestamp));
-          } else {
-            setError(err);
-          }
+          setError(err);
           setLoading(false);
         }
       }
@@ -58,11 +47,14 @@ export function useFetchCryptoData() {
 
     fetchData();
 
+    const intervalId = setInterval(fetchData, CACHE_DURATION);
+
     return () => {
       isMounted = false;
       controller.abort();
+      clearInterval(intervalId);
     };
   }, []);
 
-  return { data, loading, error, lastUpdated };
+  return { data, loading, error };
 }

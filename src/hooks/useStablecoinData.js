@@ -67,9 +67,12 @@ export function useStablecoinData() {
 
     fetchData();
 
+    const intervalId = setInterval(fetchData, CACHE_DURATION);
+
     return () => {
       isMounted = false;
       controller.abort();
+      clearInterval(intervalId);
     };
   }, []);
 

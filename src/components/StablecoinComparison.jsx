@@ -12,16 +12,20 @@ const StablecoinComparison = () => {
   if (!data) return null;
 
   const handleMouseMove = (coin, event) => {
+    if (!data || !data[coin] || !data[coin].prices) return;
+
     const rect = event.target.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const width = rect.width;
     const index = Math.round((x / width) * (data[coin].prices.length - 1));
-    const value = data[coin].prices[index][1];
+    const value = data[coin].prices[index] ? data[coin].prices[index][1] : null;
     
-    if (coin === 'usdc') {
-      setUsdcValue(value.toFixed(4));
-    } else {
-      setEurcValue(value.toFixed(4));
+    if (value !== null) {
+      if (coin === 'usdc') {
+        setUsdcValue(value.toFixed(4));
+      } else {
+        setEurcValue(value.toFixed(4));
+      }
     }
   };
 
