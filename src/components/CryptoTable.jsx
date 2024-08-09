@@ -37,10 +37,10 @@ function CryptoTable() {
             </td>
             <td>${coin.current_price.toFixed(2)}</td>
             <td style={{ color: coin.price_change_percentage_24h > 0 ? 'green' : 'red' }}>
-              {coin.price_change_percentage_24h > 0 ? '▲ ' : '▼ '}{Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
+              {coin.price_change_percentage_24h > 0 ? '▲' : '▼'}{Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
             </td>
             <td style={{ color: coin.price_change_percentage_7d_in_currency > 0 ? 'green' : 'red' }}>
-              {coin.price_change_percentage_7d_in_currency > 0 ? '▲ ' : '▼ '}{Math.abs(coin.price_change_percentage_7d_in_currency).toFixed(2)}%
+              {coin.price_change_percentage_7d_in_currency > 0 ? '▲' : '▼'}{Math.abs(coin.price_change_percentage_7d_in_currency).toFixed(2)}%
             </td>
             <td>${coin.market_cap.toLocaleString()}</td>
             <td>${coin.total_volume.toLocaleString()}</td>
