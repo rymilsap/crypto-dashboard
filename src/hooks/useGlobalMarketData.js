@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
 export function useGlobalMarketData() {

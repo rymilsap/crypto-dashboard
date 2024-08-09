@@ -13,6 +13,15 @@ const MarketOverview = () => {
   const last24hChange = ((marketCapData[marketCapData.length - 1] - marketCapData[marketCapData.length - 25]) / marketCapData[marketCapData.length - 25] * 100).toFixed(2);
   const last7dChange = ((marketCapData[marketCapData.length - 1] - marketCapData[0]) / marketCapData[0] * 100).toFixed(2);
 
+  const renderReferenceLines = (data, interval) => {
+    const lines = [];
+    for (let i = interval; i < data.length; i += interval) {
+      const x = (i / data.length) * 100;
+      lines.push(<line key={i} x1={`${x}%`} x2={`${x}%`} y1="0" y2="100%" stroke="#ffffff" strokeOpacity="0.2" />);
+    }
+    return lines;
+  };
+
   return (
     <div className="market-overview">
       <h2>Market Overview</h2>
@@ -47,6 +56,9 @@ const MarketOverview = () => {
             </span>
           </div>
           <div className="chart-container">
+            <svg width="100%" height="30" style={{position: 'absolute', top: 0, left: 0}}>
+              {renderReferenceLines(marketCapData.slice(-24), 6)}
+            </svg>
             <Sparklines data={marketCapData.slice(-24)} width={100} height={30}>
               <SparklinesLine color={last24hChange >= 0 ? "#4caf50" : "#f44336"} />
             </Sparklines>
@@ -60,6 +72,9 @@ const MarketOverview = () => {
             </span>
           </div>
           <div className="chart-container">
+            <svg width="100%" height="30" style={{position: 'absolute', top: 0, left: 0}}>
+              {renderReferenceLines(marketCapData.slice(-7), 1)}
+            </svg>
             <Sparklines data={marketCapData} width={100} height={30}>
               <SparklinesLine color={last7dChange >= 0 ? "#4caf50" : "#f44336"} />
             </Sparklines>

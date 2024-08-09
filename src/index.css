@@ -145,11 +145,18 @@ code {
   position: relative;
   width: 100%;
   height: 60px;
+  overflow: visible;
 }
 
 .chart-container svg {
   width: 100%;
   height: 100%;
+  overflow: visible;
+}
+
+.chart-container line {
+  stroke: #ffffff;
+  stroke-width: 1;
 }
 
 .chart-percentage {
