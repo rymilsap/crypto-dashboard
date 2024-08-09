@@ -11,7 +11,7 @@ const StablecoinComparison = () => {
 
   return (
     <div className="stablecoin-comparison">
-      <h2>Stablecoin Comparison</h2>
+      <h2>Stablecoin Comparison (7-day)</h2>
       <div className="stablecoin-charts">
         <div>
           <h3>USDC vs USD</h3>
