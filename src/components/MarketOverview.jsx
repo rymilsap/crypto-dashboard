@@ -78,7 +78,7 @@ const MarketOverview = () => {
           </div>
           <div className="chart-container">
             <svg width="100%" height="30" style={{position: 'absolute', top: 0, left: 0}}>
-              {renderReferenceLines(marketCapData, 24)}
+              {renderReferenceLines(marketCapData.slice(-7), 1)}
             </svg>
             <Sparklines data={marketCapData} width={100} height={30}>
               <SparklinesLine color={parseFloat(last7dChange) >= 0 ? "#4caf50" : "#f44336"} />
