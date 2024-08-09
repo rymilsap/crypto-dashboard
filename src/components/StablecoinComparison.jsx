@@ -45,7 +45,7 @@ const StablecoinComparison = () => {
         <div>
           <h3>USDC vs USD</h3>
           <div className="chart-container" onMouseMove={(e) => handleMouseMove('usdc', e)} onMouseLeave={() => handleMouseLeave('usdc')}>
-            <Sparklines data={data.usdc.prices.map(price => price[1])} width={100} height={30} margin={5}>
+            <Sparklines data={data.usdc.prices.map(price => price[1])} width={200} height={60} margin={5}>
               <SparklinesLine color="#4caf50" />
             </Sparklines>
           </div>
@@ -54,7 +54,7 @@ const StablecoinComparison = () => {
         <div>
           <h3>EURC vs EUR</h3>
           <div className="chart-container" onMouseMove={(e) => handleMouseMove('eurc', e)} onMouseLeave={() => handleMouseLeave('eurc')}>
-            <Sparklines data={data.eurc.prices.map(price => price[1])} width={100} height={30} margin={5}>
+            <Sparklines data={data.eurc.prices.map(price => price[1])} width={200} height={60} margin={5}>
               <SparklinesLine color="#2196f3" />
             </Sparklines>
           </div>
