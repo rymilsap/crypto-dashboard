@@ -58,7 +58,7 @@ function CryptoTable() {
               <td>
                 {coin.sparkline_in_7d?.price && (
                   <Sparklines data={coin.sparkline_in_7d.price} width={100} height={30}>
-                    <SparklinesLine color={(coin.price_change_percentage_7d || 0) > 0 ? "green" : "red"} />
+                    <SparklinesLine color={(coin.price_change_percentage_7d_in_currency || 0) > 0 ? "green" : "red"} />
                   </Sparklines>
                 )}
               </td>
