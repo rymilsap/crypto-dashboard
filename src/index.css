@@ -265,3 +265,48 @@ code {
 .social-icon:hover {
   color: #4caf50;
 }
+
+
+
+@media screen and (max-width: 768px) {
+  .App {
+    padding: 10px;
+  }
+
+  .market-overview,
+  .stablecoin-comparison {
+    padding: 10px;
+  }
+
+  .market-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .market-charts,
+  .stablecoin-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .crypto-table {
+    font-size: 12px;
+  }
+
+  .crypto-table th,
+  .crypto-table td {
+    padding: 8px 4px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header nav {
+    margin-top: 10px;
+  }
+
+  .NavItem {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+}
