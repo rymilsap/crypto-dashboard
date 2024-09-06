@@ -8,6 +8,7 @@ const HeaderWrapper = styled.header`
   align-items: center;
   padding: 1rem 2rem;
   background-color: #1a1a1a;
+  font-family: 'Orbitron', sans-serif;
 `;
 
 const Logo = styled.div`
@@ -16,9 +17,8 @@ const Logo = styled.div`
 `;
 
 const LogoText = styled.h1`
-  font-family: 'Orbitron', sans-serif;
   font-size: 24px;
-  background: linear-gradient(45deg, #00f260, #0575e6);
+  background: linear-gradient(45deg, #8a2be2, #da70d6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -26,7 +26,7 @@ const LogoText = styled.h1`
 
 const Tagline = styled.span`
   font-size: 12px;
-  color: #888;
+  color: #b19cd9;
   margin-left: 10px;
 `;
 
@@ -41,9 +41,10 @@ const NavItem = styled.a`
   margin-left: 20px;
   font-weight: 500;
   transition: color 0.3s ease;
+  font-size: 14px;
 
   &:hover {
-    color: #00f260;
+    color: #da70d6;
   }
 `;
 
@@ -52,9 +53,11 @@ const SocialIcon = styled.a`
   font-size: 20px;
   margin-left: 15px;
   transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
 
   &:hover {
-    color: #00f260;
+    color: #da70d6;
   }
 `;
 
