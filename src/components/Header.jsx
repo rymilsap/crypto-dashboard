@@ -69,10 +69,10 @@ const Header = () => {
         <NavItem href="#">Cryptocurrencies</NavItem>
         <NavItem href="#">Exchanges</NavItem>
         <NavItem href="#">Portfolio</NavItem>
-        <SocialIcon href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+        <SocialIcon href="https://github.com/rymilsap" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </SocialIcon>
-        <SocialIcon href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+        <SocialIcon href="https://linkedin.com/in/ryanmilsap/" target="_blank" rel="noopener noreferrer">
           <FaLinkedin />
         </SocialIcon>
       </Nav>
