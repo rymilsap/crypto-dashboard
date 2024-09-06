@@ -35,13 +35,16 @@ const Nav = styled.nav`
   align-items: center;
 `;
 
-const NavItem = styled.a`
+const NavItem = styled.button`
   color: #fff;
-  text-decoration: none;
-  margin-left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 25px;
   font-weight: 500;
   transition: color 0.3s ease;
-  font-size: 14px;
+  font-size: 16px;
+  font-family: 'Orbitron', sans-serif;
 
   &:hover {
     color: #da70d6;
@@ -62,6 +65,13 @@ const SocialIcon = styled.a`
 `;
 
 const Header = () => {
+  const scrollToCryptoTable = () => {
+    const cryptoTable = document.getElementById('crypto-table');
+    if (cryptoTable) {
+      cryptoTable.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <HeaderWrapper>
       <Logo>
@@ -69,7 +79,7 @@ const Header = () => {
         <Tagline>Crypto Market Intelligence</Tagline>
       </Logo>
       <Nav>
-        <NavItem href="#">Cryptocurrencies</NavItem>
+        <NavItem onClick={scrollToCryptoTable}>Cryptocurrencies</NavItem>
         {/* <NavItem href="#">Exchanges</NavItem> */}
         {/* <NavItem href="#">Portfolio</NavItem> */}
         <SocialIcon href="https://github.com/rymilsap" target="_blank" rel="noopener noreferrer">

@@ -10,7 +10,7 @@ function CryptoTable() {
   if (!data) return null;
 
   return (
-    <div className="crypto-table-container">
+    <div id="crypto-table" className="crypto-table-container">
       {lastUpdated && <div className="last-updated">Last updated: {new Date(lastUpdated).toLocaleString()}</div>}
       <table className="crypto-table">
         <thead>
