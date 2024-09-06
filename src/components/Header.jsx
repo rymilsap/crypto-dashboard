@@ -63,7 +63,7 @@ const Header = () => {
     <HeaderWrapper>
       <Logo>
         <LogoText>RyCoinCap</LogoText>
-        <Tagline>Your Crypto Intelligence Hub</Tagline>
+        <Tagline>Crypto Market Intelligence</Tagline>
       </Logo>
       <Nav>
         <NavItem href="#">Cryptocurrencies</NavItem>
