@@ -70,8 +70,8 @@ const Header = () => {
       </Logo>
       <Nav>
         <NavItem href="#">Cryptocurrencies</NavItem>
-        <NavItem href="#">Exchanges</NavItem>
-        <NavItem href="#">Portfolio</NavItem>
+        {/* <NavItem href="#">Exchanges</NavItem> */}
+        {/* <NavItem href="#">Portfolio</NavItem> */}
         <SocialIcon href="https://github.com/rymilsap" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </SocialIcon>
